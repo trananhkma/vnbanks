@@ -16,3 +16,6 @@ class Rate(object):
     def __init__(self, currency, **kwargs):
         self.currency = currency
         self.rates = {}
+
+    def __getitem__(self, key):
+        return self.rates[key]
