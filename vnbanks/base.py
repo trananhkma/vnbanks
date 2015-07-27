@@ -6,7 +6,13 @@ class Bank(object):
         self.name = name
 
     def deposite_rate(self):
-        pass
+        raise NotImplementedError
 
     def loan_rate(self):
-        pass
+        raise NotImplementedError
+
+
+class Rate(object):
+    def __init__(self, currency, **kwargs):
+        self.currency = currency
+        self.rates = {}
