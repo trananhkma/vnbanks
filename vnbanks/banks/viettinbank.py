@@ -5,24 +5,24 @@ import vnbanks
 import vnbanks.base
 
 
-VIETTINBANK_URL = 'https://www.vietinbank.vn/web/home/vn/index.html'
+VIETINBANK_URL = 'https://www.vietinbank.vn/web/home/vn/index.html'
+PERIOD = ['NONE',
+          'UNDER_ONE_MONTH',
+          'UNDER_TWO_MONTHS',
+          'UNDER_THREE_MONTHS',
+          'UNDER_SIX_MONTHS',
+          'UNDER_NINE_MONTHS',
+          'UNDER_TWELVE_MONTHS'
+          ]
 
-
-class Viettin(vnbanks.base.Bank):
-    def __init__(self, name='ViettinBank'):
+          
+class Vietin(vnbanks.base.Bank):
+    def __init__(self, name='VietinBank'):
         self.name = name
-        self.r = requests.get(VIETTINBANK_URL)
+        self.r = requests.get(VIETINBANK_URL)
 
     def deposit_rate(self):
         rate = vnbanks.base.Rate('VND')
-        PERIOD = ['NONE',
-                  'UNDER_ONE_MONTH',
-                  'UNDER_TWO_MONTHS',
-                  'UNDER_THREE_MONTHS',
-                  'UNDER_SIX_MONTHS',
-                  'UNDER_NINE_MONTHS',
-                  'UNDER_TWELVE_MONTHS'
-                  ]
         rates = self._get_rates()
         rate.rates = dict(zip(PERIOD, rates))
         return rate
